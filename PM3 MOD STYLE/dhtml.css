@@ -1,0 +1,339 @@
+@charset "utf-8";
+
+/* STYLES FOR DHTML PLACEMENT IN RESPONSE TO USER INTERACTIONS */
+
+.slideimage                    { width:640px; height:480px; }
+.slideimage_captioned          { width:640px; height:480px; }
+.slideimage_swapped            { width:320px; height:240px; }
+.slideimage_swapped_captioned  { width:320px; height:240px; }
+
+	/*
+	.slideimage_mirrored                    { width:640px; height:480px; }
+	.slideimage_captioned_mirrored          { width:640px; height:480px; }
+	.slideimage_swapped_mirrored            { width:320px; height:240px; }
+	.slideimage_swapped_captioned_mirrored  { width:320px; height:240px; }
+	*/
+
+.region1                       { left:339px; top:106px; width:640px; height:480px; }
+.region1_captioned             { left:339px; top:106px; width:640px; height:480px; }
+.region1_swapped               { left:18px;  top:106px; width:320px; height:240px; }
+.region1_swapped_captioned     { left:18px;  top:106px; width:320px; height:240px; }
+
+.video                         { left:18px;  top:106px; width:320px; height:304px; }
+.video_captioned               { left:18px;  top:106px; width:320px; height:368px; }
+.video_swapped                 { left:381px; top:106px; width:555px; height:480px; }
+.video_swapped_captioned       { left:424px; top:106px; width:469px; height:480px; }
+
+.sl_video                      { left:18px;  top:106px; width:320px; height:240px; }
+.sl_video_captioned            { left:18px;  top:106px; width:320px; height:304px; }
+.sl_video_swapped              { left:339px; top:106px; width:640px; height:480px; }
+.sl_video_swapped_captioned    { left:381px; top:106px; width:555px; height:480px; }
+
+.captionbox                    { display:none;  }
+.captionbox_captioned          { display:block; }
+.captionbox_swapped            { display:none;  }
+.captionbox_swapped_captioned  { display:block; }
+
+.sl_captionbox                    { display:none;  }
+.sl_captionbox_captioned          { display:block; }
+.sl_captionbox_swapped            { display:none;  }
+.sl_captionbox_swapped_captioned  { display:block; }
+
+.video_bg                      { height:304px; }
+.video_bg_captioned            { height:368px; }
+.video_bg_swapped              { height:240px; }
+.video_bg_swapped_captioned    { height:240px; }
+
+.sl_video_bg                      { height:240px; }
+.sl_video_bg_captioned            { height:304px; }
+.sl_video_bg_swapped              { height:240px; }
+.sl_video_bg_swapped_captioned    { height:240px; }
+
+.sourcemedia                   { height:304px; }
+.sourcemedia_captioned         { height:304px; }
+.sourcemedia_swapped           { height:480px; }
+.sourcemedia_swapped_captioned { height:416px; }
+
+.sourcereal                    { height:304px; 
+									// clip:rect(0px,240px,320px,0px); }
+.sourcereal_captioned          { height:304px; }
+.sourcereal_swapped            { height:527px; 
+	                                // clip:rect(0px,416px,555px,0px); }
+.sourcereal_swapped_captioned  { height:416px; }
+
+.sl_videoPlugin                      { width:320px; height:240px; }
+.sl_videoPlugin_captioned            { width:320px; height:240px; }
+.sl_videoPlugin_swapped              { width:640px; height:480px; }
+.sl_videoPlugin_swapped_captioned    { width:555px; height:416px; }
+
+.mscc                          { display:none;  }
+.mscc_captioned                { display:block; }
+.mscc_swapped                  { display:none;  }
+.mscc_swapped_captioned        { display:block; }
+
+.MediaPlayer                   { width:320px; height:304px; }
+.MediaPlayer_captioned         { width:320px; height:304px; }
+.MediaPlayer_swapped           { width:555px; height:480px; }
+.MediaPlayer_swapped_captioned { width:469px; height:416px; }
+
+.RealPlayer                    { width:320px; height:240px;
+									// clip:rect(0px,240px,320px,0px); }
+.RealPlayer_captioned          { /*width:320px; height:240px;*/ }
+.RealPlayer_swapped            { width:555px; height:416px;
+	                                // clip:rect(0px,416px,555px,0px); }
+.RealPlayer_swapped_captioned  { width:469px; height:416px; }
+
+/* audio only mode */
+.audioPlayer                   { width:320px; height:64px; }
+.audioPlayer_captioned         { width:320px; height:64px; }
+.audioPlayer_swapped           { width:555px; height:480px; }
+.audioPlayer_swapped_captioned { width:491px; height:416px; }
+
+.audioSource                   { height:304px; }
+.audioSource_captioned         { height:304px; }
+.audioSource_swapped           { height:480px; }
+.audioSource_swapped_captioned { height:432px; }
+
+.speakerImg {width:320px;height:240px;clip:rect(0px,320px,240px,0px);overflow:hidden;}
+/* end audio only mode */
+
+/*.controls                      { position:relative; top: 0px; height:64px; }*/
+.controls                      { position:relative; top:-64px; height:64px; }
+.controls_captioned            { position:relative; top: 0px;  height:64px; }
+.controls_swapped              { position:relative; top:-110px; }
+.controls_swapped_captioned    { position:relative; top: 0px;   }
+
+/* -----
+.element                   {}
+.element_captioned         {}
+.element_swapped           {}
+.element_swapped_captioned {}
+ ----- */
+ 
+.r2xtall  { height:460px; clip:rect(0px 460px 310px 0px); // clip:rect(0px,460px,310px,0px); }
+.r2tall   { height:192px; clip:rect(0px 192px 310px 0px); // clip:rect(0px,192px,310px,0px); }
+.r2normal { height:128px; clip:rect(0px 128px 310px 0px); // clip:rect(0px,128px,310px,0px); }
+.r2short  { height:64px;  clip:rect(0px 64px  310px 0px); // clip:rect(0px,64px,310px,0px);  }
+
+.sl_r2xtall  { height:460px; clip:rect(0px 460px 310px 0px);  // clip:rect(0px,460px,310px,0px); }
+.sl_r2tall   { height:192px; clip:rect(0px 192px 310px 0px);  // clip:rect(0px,192px,310px,0px); }
+.sl_r2normal { height:192px; clip:rect(0px 192px 310px 0px);  // clip:rect(0px,192px,310px,0px); }
+.sl_r2short  { height:128px; clip:rect(0px 128px  310px 0px); // clip:rect(0px,128px,310px,0px); }
+
+.region1_mirrored                         { left:18px;  top:106px;  width:640px; height:480px; }
+.region1_mirrored_captioned               { left:18px;  top:106px;  width:640px; height:480px; }
+.region1_mirrored_swapped                 { left:659px; top:106px;  width:320px; height:240px; }
+.region1_mirrored_swapped_captioned       { left:659px; top:106px;  width:320px; height:240px; }
+
+.video_mirrored                           { left:659px;  top:106px;  width:320px; height:304px; }
+.video_mirrored_captioned                 { left:659px;  top:106px;  width:320px; height:368px; }
+.video_mirrored_swapped                   { left:62px;   top:106px;  width:555px; height:480px; }
+.video_mirrored_swapped_captioned         { left:105px;  top:106px;  width:469px; height:480px; }
+
+.sl_video_mirrored                      { left:659px;  top:106px;  width:320px; height:240px; }
+.sl_video_mirrored_captioned            { left:659px;  top:106px;  width:320px; height:304px; }
+.sl_video_mirrored_swapped              { left:18px;   top:106px;  width:640px; height:480px; }
+.sl_video_mirrored_swapped_captioned    { left:62px;  top:106px;  width:555px; height:480px; }
+
+/********************************************************************************/
+/****************************** Widescreen Styles *******************************/
+.ws_region1                       { left:339px; top:106px; width:640px; height:480px; }
+.ws_region1_captioned             { left:339px; top:106px; width:640px; height:480px; }
+.ws_region1_swapped               { left:18px;  top:106px; width:320px; height:240px; }
+.ws_region1_swapped_captioned     { left:18px;  top:106px; width:320px; height:240px; }
+
+.ws_video                         { left:18px;  top:106px; width:320px; height:244px; }
+.ws_video_captioned               { left:18px;  top:106px; width:320px; height:308px; }
+.ws_video_swapped                 { left:339px; top:134px; width:640px; height:424px; }
+.ws_video_swapped_captioned       { left:346px; top:106px; width:626px; height:480px; }
+
+.ws_sl_video                      { left:18px;  top:106px; width:320px; height:180px; }
+.ws_sl_video_captioned            { left:18px;  top:106px; width:320px; height:244px; }
+.ws_sl_video_swapped              { left:339px; top:166px; width:640px; height:360px; }
+.ws_sl_video_swapped_captioned    { left:339px; top:134px; width:640px; height:424px; }
+
+.ws_captionbox                    { display:none;  }
+.ws_captionbox_captioned          { display:block; }
+.ws_captionbox_swapped            { display:none;  }
+.ws_captionbox_swapped_captioned  { display:block; }
+
+.ws_sl_captionbox                    { display:none;  }
+.ws_sl_captionbox_captioned          { display:block; }
+.ws_sl_captionbox_swapped            { display:none;  }
+.ws_sl_captionbox_swapped_captioned  { display:block; }
+
+.ws_video_bg                      { height:244px; }
+.ws_video_bg_captioned            { height:308px; }
+.ws_video_bg_swapped              { height:240px; }
+.ws_video_bg_swapped_captioned    { height:240px; }
+
+.ws_sl_video_bg                      { height:180px; }
+.ws_sl_video_bg_captioned            { height:244px; }
+.ws_sl_video_bg_swapped              { height:240px; }
+.ws_sl_video_bg_swapped_captioned    { height:240px; }
+
+.ws_sourcemedia                   { height:180px; }
+.ws_sourcemedia_captioned         { height:244px; }
+.ws_sourcemedia_swapped           { height:360px; }
+.ws_sourcemedia_swapped_captioned { height:416px; }
+
+.ws_sl_sourcemedia                   { height:180px; }
+.ws_sl_sourcemedia_captioned         { height:180px; }
+.ws_sl_sourcemedia_swapped           { height:360px; }
+.ws_sl_sourcemedia_swapped_captioned { height:360px; }
+
+.ws_sourcereal                    { height:180px; 
+									// clip:rect(0px,320px,180px,0px); }
+.ws_sourcereal_captioned          { height:244px; }
+.ws_sourcereal_swapped            { height:360px; 
+	                                // clip:rect(0px,640px,360px,0px); }
+.ws_sourcereal_swapped_captioned  { height:416px; }
+
+.ws_sl_videoPlugin                      { width:320px; height:180px; }
+.ws_sl_videoPlugin_captioned            { width:320px; height:180px; }
+.ws_sl_videoPlugin_swapped              { width:640px; height:360px; }
+.ws_sl_videoPlugin_swapped_captioned    { width:640px; height:360px; }
+
+.ws_MediaPlayer                   { width:320px; height:244px; }
+.ws_MediaPlayer_captioned         { width:320px; height:244px; }
+.ws_MediaPlayer_swapped           { width:640px; height:424px; }
+.ws_MediaPlayer_swapped_captioned { width:626px; height:416px; }
+
+.ws_RealPlayer                    { width:320px; height:180px;
+									// clip:rect(0px,320px,180px,0px); }
+.ws_RealPlayer_captioned          { width:320px; height:244px; }
+.ws_RealPlayer_swapped            { width:640px; height:360px;
+	                                // clip:rect(0px,640px,360px,0px); }
+.ws_RealPlayer_swapped_captioned  { width:626px; height:416px; }
+
+/* audio only mode */
+.ws_audioPlayer                   { width:320px; height:64px; }
+.ws_audioPlayer_captioned         { width:320px; height:64px; }
+.ws_audioPlayer_swapped           { width:555px; height:480px; }
+.ws_audioPlayer_swapped_captioned { width:491px; height:416px; }
+
+.ws_audioSource                   { height:180px; }
+.ws_audioSource_captioned         { height:244px; }
+.ws_audioSource_swapped           { height:480px; }
+.ws_audioSource_swapped_captioned { height:432px; }
+
+.ws_sl_audioSource                   { height:180px; }
+.ws_sl_audioSource_captioned         { height:180px; }
+.ws_sl_audioSource_swapped           { height:480px; }
+.ws_sl_audioSource_swapped_captioned { height:432px; }
+
+.ws_speakerImg {width:320px;height:180px;clip:rect(0px,320px,180px,0px);overflow:hidden;}
+/* end audio only mode */
+
+.ws_r2xtall  { height:460px; clip:rect(0px 460px 310px 0px); // clip:rect(0px,460px,310px,0px); }
+.ws_r2tall   { height:192px; clip:rect(0px 192px 310px 0px); // clip:rect(0px,192px,310px,0px); }
+.ws_r2normal { height:188px; clip:rect(0px 188px 310px 0px); // clip:rect(0px,188px,310px,0px); }
+.ws_r2short  { height:124px; clip:rect(0px 124px 310px 0px); // clip:rect(0px,124px,310px,0px); }
+
+/* why is the height of "tall" shorter than "normal" here? because the SL player has the control bar
+floating over the video than under it. so for WS, the height of the SL player is actually just 180
+versus 240 for standard. */
+.ws_sl_r2xtall  { height:460px; clip:rect(0px 460px 310px 0px); // clip:rect(0px,460px,310px,0px); }
+.ws_sl_r2tall   { height:192px; clip:rect(0px 192px 310px 0px); // clip:rect(0px,192px,310px,0px); }
+.ws_sl_r2normal { height:252px; clip:rect(0px 252px 310px 0px); // clip:rect(0px,252px,310px,0px); }
+.ws_sl_r2short  { height:188px; clip:rect(0px 188px 310px 0px); // clip:rect(0px,188px,310px,0px); }
+
+.ws_region1_mirrored                         { left:18px;  top:106px;  width:640px; height:480px; }
+.ws_region1_mirrored_captioned               { left:18px;  top:106px;  width:640px; height:480px; }
+.ws_region1_mirrored_swapped                 { left:659px; top:106px;  width:320px; height:240px; }
+.ws_region1_mirrored_swapped_captioned       { left:659px; top:106px;  width:320px; height:240px; }
+
+.ws_video_mirrored                           { left:659px;  top:106px;  width:320px; height:244px; }
+.ws_video_mirrored_captioned                 { left:659px;  top:106px;  width:320px; height:308px; }
+.ws_video_mirrored_swapped                   { left:18px;   top:134px;  width:640px; height:424px; }
+.ws_video_mirrored_swapped_captioned         { left:25px;   top:106px;  width:626px; height:480px; }
+
+.ws_sl_video_mirrored                      { left:659px;  top:106px;  width:320px; height:180px; }
+.ws_sl_video_mirrored_captioned            { left:659px;  top:106px;  width:320px; height:244px; }
+.ws_sl_video_mirrored_swapped              { left:18px;   top:166px;  width:640px; height:360px; }
+.ws_sl_video_mirrored_swapped_captioned    { left:18px;   top:134px;  width:640px; height:424px; }
+
+/* prevent scrollbars from appearing in moderated QA panel. yes they're all necessary. */
+#interactiveBox,
+#askQuestionBox { width:320px !important; padding:0 !important; overflow:hidden;}
+#interactive,
+#askQuestionFrame { width:320px;}
+/*#interactiveBox.r2normal,
+#interactive.r2normal,
+#askQuestionBox.r2normal,
+#askQuestionFrame.r2normal { height:148px !important; clip:rect(0px 148px 320px 0px) !important; // clip:rect(0px,148px,320px,0px); }
+#interactiveBox.r2short,
+#interactive.r2short,
+#askQuestionBox.r2short,
+#askQuestionFrame.r2short { height:84px !important; clip:rect(0px 84px 320px 0px) !important; // clip:rect(0px,84px,320px,0px);  }
+#interactiveBox.ws_r2normal,
+#interactive.ws_r2normal,
+#askQuestionBox.ws_r2normal,
+#askQuestionFrame.ws_r2normal { height:208px !important; clip:rect(0px 208px 320px 0px) !important; // clip:rect(0px,208px,320px,0px); }
+#interactiveBox.ws_r2short,
+#interactive.ws_r2short,
+#askQuestionBox.ws_r2short,
+#askQuestionFrame.ws_r2short { height:144px !important; clip:rect(0px 144px 320px 0px) !important; // clip:rect(0px,144px,320px,0px);  }*/
+
+/* everything below here needs cleaning up */
+#interactive {width:320px;height:212px;}
+
+.r2short #interactive,  .r2short #askQuestionFrame  {height:84px;}
+.r2normal #interactive, .r2normal #askQuestionFrame {height:148px;}
+.r2tall #interactive,   .r2tall #askQuestionFrame   {height:212px;}
+.r2xtall #interactive,  .r2xtall #askQuestionFrame  {height:480px;}
+
+.sl_r2short #interactive,  .sl_r2short #askQuestionFrame  {height:148px;}
+.sl_r2normal #interactive, .sl_r2normal #askQuestionFrame {height:212px;}
+.sl_r2tall #interactive,   .sl_r2tall #askQuestionFrame   {height:212px;}
+.sl_r2xtall #interactive,  .sl_r2xtall #askQuestionFrame  {height:460px;}
+
+.ws_r2short #interactive,  .ws_r2short #askQuestionFrame  {height:144px;}
+.ws_r2normal #interactive, .ws_r2normal #askQuestionFrame {height:208px;}
+.ws_r2tall #interactive,   .ws_r2tall #askQuestionFrame   {height:212px;}
+.ws_r2xtall #interactive,  .ws_r2xtall #askQuestionFrame  {height:480px;}
+
+.ws_sl_r2short #interactive,  .ws_sl_r2short #askQuestionFrame  {height:208px;}
+.ws_sl_r2normal #interactive, .ws_sl_r2normal #askQuestionFrame {height:272px;}
+.ws_sl_r2tall #interactive,   .ws_sl_r2tall #askQuestionFrame   {height:212px;}
+.ws_sl_r2xtall #interactive,  .ws_sl_r2xtall #askQuestionFrame  {height:480px;}
+
+#interactiveBox.r2short,
+#askQuestionBox.r2short {height:84px;clip:rect(0px,84px,320px,0px);}
+#interactiveBox.sl_r2short,
+#askQuestionBox.sl_r2short {height:148px;clip:rect(0px,148px,320px,0px);}
+
+#interactiveBox.r2normal,
+#askQuestionBox.r2normal {height:148px;clip:rect(0px,148px,320px,0px);}
+#interactiveBox.sl_r2normal,
+#askQuestionBox.sl_r2normal {height:212px;clip:rect(0px,212px,320px,0px);}
+
+#interactiveBox.r2tall,
+#askQuestionBox.r2tall,
+#interactiveBox.sl_r2tall,
+#askQuestionBox.sl_r2tall {height:212px;clip:rect(0px,212px,320px,0px);}
+
+#interactiveBox.r2xtall,
+#askQuestionBox.r2xtall,
+#interactiveBox.sl_r2xtall,
+#askQuestionBox.sl_r2xtall {height:480px;clip:rect(0px,480px,320px,0px);}
+
+#interactiveBox.ws_r2short,
+#askQuestionBox.ws_r2short    {height:144px;clip:rect(0px,144px,320px,0px);}
+#interactiveBox.ws_sl_r2short,
+#askQuestionBox.ws_sl_r2short {height:208px;clip:rect(0px,208px,320px,0px);}
+
+#interactiveBox.ws_r2normal,
+#askQuestionBox.ws_r2normal    {height:208px;clip:rect(0px,208px,320px,0px);}
+#interactiveBox.ws_sl_r2normal,
+#askQuestionBox.ws_sl_r2normal {height:272px;clip:rect(0px,272px,320px,0px);}
+
+#interactiveBox.ws_r2tall,
+#askQuestionBox.ws_r2tall,
+#interactiveBox.ws_sl_r2tall,
+#askQuestionBox.ws_sl_r2tall {height:212px;clip:rect(0px,212px,320px,0px);}
+
+#interactiveBox.ws_r2xtall,
+#askQuestionBox.ws_r2xtall,
+#interactiveBox.ws_sl_r2xtall,
+#askQuestionBox.ws_sl_r2xtall {height:480px;clip:rect(0px,480px,320px,0px);}

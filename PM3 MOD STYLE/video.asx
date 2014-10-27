@@ -1,0 +1,7 @@
+<ASX version="3">
+	<TITLE><<@presentationtitle@>></TITLE>	
+	<Entry>
+		<TITLE><<@presentationtitle@>></TITLE>
+		<ref href="<<@SOURCEVIDEOFILE@>>"/>
+	</Entry>
+</ASX>

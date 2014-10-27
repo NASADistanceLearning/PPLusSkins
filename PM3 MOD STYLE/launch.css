@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvv BEGIN LAUNCH STYLES vvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/* use pageOuter/pageInner to absolutely position containing element to middle */
+#pageOuter{height:100%;width:100%;display:table;vertical-align:middle;}
+/* define height of containing element to acheive vertical align */
+#pageInner {position:relative;vertical-align:middle;display:table-cell;height:500px;}
+/* launchOuter is containing element that gets absolutely positioned to center of page */
+#launchOuter {position:relative;height:500px;width:700px;clip:rect(0px,700px,500px,0px);background:#ffffff;margin-left:auto;margin-right:auto;background-image:url(bg_launch.jpg);border:1px solid #384d57;}
+
+#launchBG {position:relative;z-index:1;left:0px;top:0px;width:700px;height:500px;clip:rect(0px,700px,500px,0px);}
+#headerBGLayer {position:absolute;z-index:2;overflow:hidden;left:0px;top:0px;width:700px;height:75px;clip:rect(0px,700px,75px,0px);}
+#containerBG {position:absolute;z-index:5;left:55px;top:90px;width:550px;height:345px;font-size:12px;padding:20px;border:1px solid #000000;background-color:#ffffff;}
+#containerBG a {color:#333333;}
+#containerBG ul {list-style:disc url(launch_bullet.gif) outside;}
+#containerBG ul li {margin-left:20px;}
+#presModeBox {position:absolute;z-index:10;left:10px;bottom:10px;display:none;}
+#moderatorLayer {position:absolute;z-index:15;right:10px;bottom:10px;}
+#moderatorLayer a {color:#000000;}
+div.mediaGroup {overflow:auto;padding-bottom:20px;}
+div.mediaGroup ul {margin-top:0px;font-size:14px;}
+div.mediaIcon {float:left;width:210px;margin-right:20px;text-align:right;font-size:10px;}
+div.mediaDiv {float:left;overflow:hidden;width:auto;}
+
+#wmGroup,#rmGroup,#mp3Group,
+#flGroup,#auxGroup,
+#msh, #msm, #msl,
+#rnh, #rnm, #rnl {display:none;}
+
+/* registration form styles */
+#regMessage {text-transform:uppercase;}
+/* use this style for left justified, horizontal labels */
+#regForm form span {display:block;padding:2px 0px;margin-left:170px;}
+#regForm form label {font-weight:bold;color:#333333;width:155px;float:left;margin-left:-155px;}
+#regForm form input {width:80%;padding:1px;}
+#regForm input.regBtn {margin:0;padding:2px;width:auto;}
+#regForm hr {margin:10px 0;border-top:1px dotted #dddddd;}
+
+/* use this style for vertical labels */
+/*#regForm {margin-left:60px;}
+#regForm form span {display:block;padding:3px 0px;margin-right:40px;}
+#regForm form label {display:block;text-transform:uppercase;font-size:9px;color:#333333;}
+#regForm form input {width:100%;padding:0;}
+#regForm input.regBtn {margin:0;padding:2px 0;width:auto;float:right;}
+#regForm hr {margin:5px 0;border-top:1px solid #cccccc;}*/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ END LAUNCH STYLES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/

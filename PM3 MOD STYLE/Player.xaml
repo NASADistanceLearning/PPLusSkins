@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Canvas xmlns="http://schemas.microsoft.com/client/2007"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Canvas.Resources>
+
+    </Canvas.Resources>
+    <MediaElement x:Name="videoPlayer" Width="320" />
+    <Image x:Name="imgSpeaker" Width="320"  Height="240" Stretch="Fill" />
+    <TextBlock x:Name="txtStat" FontSize="8" Canvas.Left="4" Canvas.Top="2"  FontFamily="Verdana" Foreground="White"></TextBlock>
+
+    <!-- Background for player controls. Has transparency. Don't worry about this. -->
+    <Canvas x:Name="controlPanel" Canvas.Top="0" Width="320" Height="45" Background="#33999F9F" Visibility="Collapsed">
+        <!-- Accent Background for scrub bar. Has transparency. Don't worry about this. -->
+        <Canvas x:Name="scrubPartitionBG" Width="320" Height="20" Canvas.Top="0" Background="#19FFFFFF" Opacity="1"></Canvas>
+
+        <Canvas x:Name="controlBar" Background="#00FFFFFF" Canvas.Left="10" Width="290" Height="20" Opacity="0.4">
+            <!-- Download Bar -->
+            <Canvas Canvas.Top="2.917">
+                <Rectangle x:Name="downloadBar" Canvas.Top="3.083" Width="292" Height="7" Stroke="#FF000000" Fill="#B2000000" RadiusX="2" RadiusY="2" />
+                <Rectangle x:Name="downloadThumb" Canvas.Top="3.083" Width="180" Height="7" Stroke="#FF000000" RadiusX="2" RadiusY="2">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAFE2FC" Offset="0"/>
+                            <GradientStop Color="#FF14506E" Offset="1"/>
+                            <GradientStop Color="#FF5EB5E2" Offset="0.327"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Canvas>
+            <!-- Track bar. Trackbar must be filled (even w/ transparency) or else it won't work -->
+            <Canvas x:Name="timeTrack" Canvas.Top="2.917">
+                <Rectangle x:Name="trackProgress" Width="104.5" Height="7" Stroke="#FF000000" 
+                        RadiusX="2" RadiusY="2" Canvas.Top="3.083">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAFE2FC" Offset="0"/>
+                            <GradientStop Color="#FF0A354B" Offset="1"/>
+                            <GradientStop Color="#FF1881B7" Offset="0.22"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle x:Name="trackBar" Width="292" Height="13" Stroke="#00000000" Fill="#00000000"  Cursor="Hand"
+		            RadiusX="2" RadiusY="2" Canvas.Top="0.083" StrokeThickness="0"/>
+                <Rectangle x:Name="trackThumb" Width="8" Height="11" Stroke="#FF000000"
+		            RadiusX="2" RadiusY="2" Canvas.Left="98.5" Canvas.Top="1">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF5E5E5E" Offset="1"/>
+                            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Canvas>
+        </Canvas>
+        <Canvas x:Name="docking" Width="20" Height="20" Background="#00FFFFFF" Canvas.Left="301" Canvas.Top="0" Opacity="0.4" Cursor="Hand">
+            <Path x:Name="btnDock" Width="8.166" Height="11.062" 
+                Canvas.Top="3" Canvas.Left="6" Visibility="Collapsed"
+				Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF000000" StrokeThickness="0"
+				Data="M4,4 L5,4 5,1 4,1 z M6,0 L6,4 8,5 4.75,5 4.75,8 4,9 3.25,8 3.25,5 0,5 2,4 2,0 z"/>
+            <Path  x:Name="btnUndock" Width="8.166" Height="11.062" 
+                Canvas.Top="3" Canvas.Left="6"
+				Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF000000" StrokeThickness="0"
+				Data="M4,4 L5,4 5,1 4,1 z M6,0 L6,4 8,5 4.75,5 4.75,8 4,9 3.25,8 3.25,5 0,5 2,4 2,0 z" RenderTransformOrigin="0.5,0.5">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="0" AngleY="0"/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform X="0" Y="0"/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+        </Canvas>
+        <!-- Button Play -->
+        <Canvas x:Name="btnPlay" Width="26" Height="20" Background="#00FFFFFF" Canvas.Left="2.941" Canvas.Top="22.334" Cursor="Hand" Opacity="0.5" >
+            <Path Canvas.Left="8" Canvas.Top="4"  Width="10" Height="12" Stretch="Fill" Stroke="#FF000000" Fill="#FFFFFFFF" OpacityMask="#FF000000" Data="M9.3333333,219.33333L9.3333333,233.50033 20.833569,226.3399z" StrokeThickness="0" />
+        </Canvas>
+
+        <!-- Button Pause. Notice Background w/ alpha channel = 0 -->
+        <Canvas x:Name="btnPause" Width="26" Height="20" Background="#00FFFFFF" Canvas.Left="2.941" Canvas.Top="22.334" Cursor="Hand" Opacity="0.5">
+            <Rectangle Width="3.5" Height="12" Stroke="#FF000000" StrokeThickness="0" Fill="#FFFFFFFF" Canvas.Left="8" Canvas.Top="4" />
+            <Rectangle Width="3.5" Height="12" Stroke="#FF000000" StrokeThickness="0" Fill="#FFFFFFFF" Canvas.Left="14.384" Canvas.Top="4"/>
+        </Canvas>
+
+        <Rectangle x:Name="divider1" Width="2.5" Height="22" Canvas.Left="31.833" Canvas.Top="21.667" StrokeThickness="0" Opacity="0.25">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="-3.667,11.667" StartPoint="6.167,11.666" MappingMode="Absolute">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FE000000" Offset="0.496"/>
+                    <GradientStop Color="#FEFFFFFF" Offset="0.504"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0.509"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+
+        <!-- Button Stop -->
+        <Canvas x:Name="btnStop" Width="26" Background="#00FFFFFF"  Height="20" Canvas.Left="36" Canvas.Top="22.334" Cursor="Hand" Opacity="0.5">
+            <Rectangle Width="10" Height="10" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0" Canvas.Top="5" Canvas.Left="8"/>
+        </Canvas>
+
+        <Rectangle x:Name="divider2" Width="2.5" Height="22" Canvas.Left="64.8" Canvas.Top="21.667" StrokeThickness="0" Opacity="0.25">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0.509"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="-3.667,11.667" StartPoint="6.167,11.666" MappingMode="Absolute">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FE000000" Offset="0.496"/>
+                    <GradientStop Color="#FEFFFFFF" Offset="0.504"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Container for time indicator -->
+        <Canvas x:Name="timerControl" Canvas.Left="82.357" Canvas.Top="23.5" Opacity="0.4">
+            <Rectangle x:Name="timeHolder" Width="100" Height="18" Fill="#7E000000" Stroke="#FF000000" StrokeThickness="0" RadiusX="2" RadiusY="2"/>
+            <TextBlock x:Name="txtTimer" Canvas.Left="3" Canvas.Top="2"  Width="85" Height="18" FontSize="10" FontFamily="Verdana" Foreground="White"></TextBlock>
+        </Canvas>
+        <Rectangle x:Name="divider3" Width="2.5" Height="22" Canvas.Left="188.181" Canvas.Top="21.667" StrokeThickness="0" Opacity="0.25">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0.509"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="-3.667,11.667" StartPoint="6.167,11.666" MappingMode="Absolute">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FE000000" Offset="0.496"/>
+                    <GradientStop Color="#FEFFFFFF" Offset="0.504"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Button Fullscreen -->
+        <Canvas x:Name="btnFullscreen" Background="#00FFFFFF"  Width="32" Height="20" Canvas.Left="192.178" Canvas.Top="22.334" Opacity="0.4" Cursor="Hand">
+            <Rectangle Canvas.Left="5" Canvas.Top="3" Width="20" Height="15" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0" RadiusX="2" RadiusY="2"/>
+            <Rectangle Canvas.Left="6.75" Canvas.Top="7.5" Width="12" Height="9" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5" RadiusX="2" RadiusY="2"/>
+        </Canvas>
+
+        <Rectangle x:Name="divider4" Width="2.5" Height="22" Canvas.Left="226.305" Canvas.Top="21.667" StrokeThickness="0" Opacity="0.25">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0.509"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="-3.667,11.667" StartPoint="6.167,11.666" MappingMode="Absolute">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FE000000" Offset="0.496"/>
+                    <GradientStop Color="#FEFFFFFF" Offset="0.504"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Volume Controls -->
+        <Canvas x:Name="volumeControl"  Width="45" Canvas.Left="235.507" Canvas.Top="25.999" Opacity="0.4">
+            <Rectangle Width="45" Height="12" Fill="#7F000000" Stroke="#FF000000" StrokeThickness="0" Canvas.Top="1"/>
+            <Canvas Canvas.Left="1">
+                <Rectangle x:Name="volumeProgress" Width="32" Height="10" Fill="#FF99BF7A" Stroke="#7E000000" StrokeThickness="0" Visibility="Visible" Canvas.Top="2"/>
+                <Rectangle x:Name="volumeBar" Width="45" Height="12" Opacity="0" Fill="#7F000000" Stroke="#FF000000" StrokeThickness="0" Canvas.Top="1" Cursor="Hand" />
+                <Rectangle x:Name="volumeThumb" Width="6" Height="14" Stroke="#FF000000" RadiusX="2" RadiusY="2" Canvas.Left="27.125">
+                    <Rectangle.Fill>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF5E5E5E" Offset="1"/>
+                            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Canvas>
+        </Canvas>
+
+        <Rectangle x:Name="divider5" Width="2.5" Height="22" Canvas.Left="287.837" Canvas.Top="21.667" StrokeThickness="0" Opacity="0.25">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="0.509"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="-3.667,11.667" StartPoint="6.167,11.666" MappingMode="Absolute">
+                    <GradientStop Color="#FF000000" Offset="0"/>
+                    <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                    <GradientStop Color="#FE000000" Offset="0.496"/>
+                    <GradientStop Color="#FEFFFFFF" Offset="0.504"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Button Mute -->
+        <Canvas x:Name="btnMute" Cursor="Hand" Background="#00FFFFFF" Height="20" Width="26" Canvas.Left="292.417" Canvas.Top="22.334" Opacity="0.5">
+            <Path x:Name="speaker" Canvas.Left="4"  Canvas.Top="2.284" Width="9.872" Height="14.125" Fill="#ffffffff" Stretch="Fill" Stroke=" #ffffffff" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" StrokeMiterLimit="1.0" StrokeStartLineCap="Round" StrokeThickness="1" Data="M8.1249993,0 C8.1249993,0 8.1249993,1.9863281 8.1249993,4.4692384 L8.1249993,5.2466542 9.3259318,5.7440964 C9.6633399,6.0815045 9.8720305,6.547629 9.8720305,7.0624968 9.8720305,7.5773641 9.6633399,8.0434891 9.3259318,8.3808972 L8.1249993,8.8783394 8.1249993,9.6557614 C8.1249993,12.138672 8.1249993,14.125 8.1249993,14.125 8.1249993,14.125 3.6188252,9.0130955 3.6188252,9.0130955 L0,9.0130955 0,5.1119047 C1.0412987E-07,5.1119047 3.4401582,5.1119047 3.4401582,5.1119047 3.4401582,5.1119047 8.1249993,0 8.1249993,0 z" />
+            <Canvas x:Name="muteOffSymbol" Canvas.Left="13.791" Canvas.Top="2">
+                <Path Width="3.074" Height="6.4" Canvas.Top="4.033" Stretch="Fill" Stroke=" #ffffffff" StrokeEndLineCap="Round" StrokeLineJoin="Round" StrokeMiterLimit="1.0" StrokeStartLineCap="Round" StrokeThickness="1" Data="M305.08309,222.88304 C305.08309,222.88304 307.15738,223.65576 307.15738,225.53574 307.15738,227.41573 305.21949,228.28293 305.21949,228.28293"/>
+                <Path Width="4.682" Height="10.647" Canvas.Left="0.618" Canvas.Top="1.906" Stretch="Fill" Stroke=" #ffffffff" StrokeEndLineCap="Round" StrokeLineJoin="Round" StrokeMiterLimit="1.0" StrokeStartLineCap="Round" StrokeThickness="1" Data="M305.08309,222.88304 C305.08309,222.88304 306.94733,223.65576 306.94733,225.53574 306.94733,227.41573 305.21949,228.28293 305.21949,228.28293" />
+                <Path Width="6.194" Height="14.465" Canvas.Left="1.368" Stretch="Fill" Stroke=" #ffffffff" StrokeEndLineCap="Round" StrokeLineJoin="Round" StrokeMiterLimit="1.0" StrokeStartLineCap="Round" StrokeThickness="1" Data="M305.08309,222.88304 C305.08309,222.88304 306.89509,223.65576 306.89509,225.53574 306.89509,227.41573 305.21949,228.28293 305.21949,228.28293" />
+            </Canvas>
+        </Canvas>
+    </Canvas>
+</Canvas>

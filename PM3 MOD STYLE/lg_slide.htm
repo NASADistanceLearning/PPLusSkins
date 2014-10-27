@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title></title>
+<script type="text/javascript" src="lib.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+    setPageDefaultTitle();
+   
+    function _unloadme() {
+	    try{
+		    if(self.opener && self.opener.top.video && self.opener.top.video.lgwin) {
+			    self.opener.top.video.lgwin = false;
+		    }
+	    } catch(e) {
+		    return true;
+	    }
+    }
+
+    function _loadme() {
+        var o = self.opener;
+        if (o && o.top.video) document.lg.src = o.top.video.currentLargeSlide || getUnavailableSlideImage();
+    }
+
+    function _detectEscKey(e) {
+        var evt = e || window.event;
+        if (evt.keyCode == 27) { // [Esc] key
+            self.close();
+        }
+    }
+
+    var s = 1;
+    var w = 960;
+    var h = 720;
+
+    function rsWin() {
+        if (s == 1 && w > 0 && h > 0) {
+            var mx = (screen.width - w) / 2;
+            var my = (screen.height - h) / 2;
+            window.moveTo(mx, my);
+        }
+    }
+
+// assignOpener -- allow IE7 to close without js error
+//window.open('','_self');
+
+// --> 
+</script>
+<style type="text/css">
+<!--
+body {background-color: #000000;margin:0;padding:0;}
+-->
+</style>
+</head>
+<body onLoad="rsWin();_loadme();" onUnload="_unloadme()" onKeyDown="_detectEscKey();" scroll="no">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="center" valign="middle"><a href="javascript:window.top.close();"><img src="spacer.gif" alt="Click on Slide Image to Close" name="lg" border="0" id="lg"></a></td>
+	</tr>
+</table>
+<div id="Layer2" style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px; overflow: hidden; visibility: hidden;"><img src="spacer.gif" name="trt" width="100%" height="100%" id="tracer"></div>
+<div id="Layer3" style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px; overflow: hidden; visibility: hidden;"><img src="spacer.gif" name="org" id="org"></div>
+</body>
+</html>

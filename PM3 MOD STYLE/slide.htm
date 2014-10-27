@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title><<@presentationtitle@>></title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {margin:0px;padding:0px; font-size:0em;}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_changeProp(objName,x,theProp,theValue) { //v6.0
+  var obj = MM_findObj(objName);
+  if (obj && (theProp.indexOf("style.")==-1 || obj.style)){
+    if (theValue == true || theValue == false)
+      eval("obj."+theProp+"="+theValue);
+    else eval("obj."+theProp+"='"+theValue+"'");
+  }
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+
+function P7_MultiMove() { //v1.4 PVII
+ var a,b,x,xx,y,yy,h,r1,r2=0,pa=0;args=P7_MultiMove.arguments;
+ if(document.layers && !document.p7mmc){document.p7mmc=true;p7mmh = document.height;}
+ if((navigator.appName=="Netscape") && parseInt(navigator.appVersion)>4){pa="px";}
+ for(i=0; i<(args.length-3); i+=4){
+ if((a=MM_findObj(args[i]))!=null) {
+  b=(document.layers)?a:a.style;x=args[i+1];y=args[i+2];
+  if(args[i+3]==1){
+   xx=(parseInt(b.left))?parseInt(b.left):0;
+   yy=(parseInt(b.top))?parseInt(b.top):0;x+=xx;y+=yy;}
+  b.left=(x+pa);b.top=(y+pa);
+  if(document.layers){h=parseInt(b.clip.height);r1=y+h;r2=(r1>r2)?r1:r2;}}}
+ if(document.layers){var hh=parseInt(p7mmh);if(r2>hh){hh=r2;}
+  var ww=document.width;document.height=hh;document.width=ww;}
+}
+
+function thbTxt(n) {
+	if(window.top.topFrame){
+		window.top.topFrame.tgTxt.innerHTML = n;
+	}
+}
+
+function showVid(e,lyr){
+	if(e){
+		MM_showHideLayers(lyr,'','show');
+	} else {
+		MM_showHideLayers(lyr,'','hide');
+	}
+}
+
+var hasSlideInfo = 1;
+
+function toggleView(m) {
+	showVid(true,'slideLayer');
+	if (m==0){
+		showVid(false,'lythb');
+		showVid(false,'layFiller');
+		showVid(false,'slideFiller');
+		MM_changeProp('swapL','','style.width','640','DIV');
+		MM_changeProp('swapL','','style.height','480','DIV');
+		MM_changeProp('slideimage','','width','640','IMG')
+		MM_changeProp('slideimage','','height','480','IMG')
+		P7_MultiMove('swapL',0,0,0);
+		hasSlideInfo = 1;
+		thbTxt('Thumbnail View');
+	} else {
+		showVid(true,'lythb');
+		showVid(true,'layFiller');
+		showVid(true,'slideFiller');
+		MM_changeProp('swapL','','style.width','424','DIV');
+		MM_changeProp('swapL','','style.height','318','DIV');
+		MM_changeProp('slideimage','','width','424','IMG')
+		MM_changeProp('slideimage','','height','318','IMG')
+		P7_MultiMove('swapL',207,9,0);
+		hasSlideInfo = 0;
+		thbTxt('Full Slide View');
+	}
+}
+//-->
+</script>
+
+<script language="JavaScript">
+<!--
+var sname = "";
+var sc = 0;
+function _loadme() {
+	var re = /slide([\d]+).(gif|jpg)$/i;
+	var smg = new String(document["smg"].src);
+	if(re.test(smg)) {
+		var tarr = re.exec(smg);
+		sname = new String(tarr[0]);
+		sc = new String(tarr[1]);
+		if(top.List && top.List.lgwin) {
+			top.List.lgwin.document["lg"].src = "lg_"+ sname;
+		}
+		if(top.List && top.List.scount) {
+			top.List.scount.innerHTML = "Slide "+ sc +" ";
+		}
+	}
+}
+
+function seek(timestr) {
+	if(window.parent.video){
+		window.parent.video.seek(timestr);
+	} else if(window.opener && window.opener.parent.video) {
+		window.opener.parent.video.seek(timestr);
+	} else {
+		alert(timestr);
+	}
+}
+
+function Mod(a, b) { 
+	covt = a-Math.floor(a/b)*b;
+	return (covt);
+}
+
+function GetTimeFromLong(timer) {
+	var sec= Math.floor(timer);
+	var	intHours = (sec - (Mod(sec, 3600))) / 3600;
+	var intSeconds = Mod((Mod(sec, 3600)),60);
+	var totHoursSec = 0;
+	if (intHours > 0){totHoursSec = intHours*60;}
+	var intMinutes = Math.round(((sec - (Mod(intHours, 3600)) - intSeconds) / 60)-totHoursSec);
+	var strHours = new String((intHours));
+	var strMinutes = new String((intMinutes));
+	var strSeconds = new String((intSeconds));
+	if (intHours < 10) strHours = "0" + strHours;
+	if (intMinutes < 10) strMinutes = "0" + strMinutes;
+	if (intSeconds < 10) strSeconds = "0" + strSeconds;
+	sec = strHours + ":" + strMinutes + ":" + strSeconds;
+	return sec;
+}
+
+function time2s(str) {
+	var re = /[0]*([1-9])/g;
+	str = new String(str);
+	if(re.test(str)) str = str.replace(re,"$1");
+	var foo = str.split(":");
+	var tsec = parseInt(foo[foo.length-1]);
+	tsec += parseInt(foo[foo.length-2])*60;
+	tsec += parseInt(foo[foo.length-3])*60*60;
+	return tsec
+}
+
+function genSync(curTime){
+	var listNum = xmlEventArray.length;
+	var q=0;
+	while (q < listNum){
+		var btn = new String('chp' + q);
+		var xTm = xmlEventArray[q][1];
+		xTm = time2s(xTm);
+		var cTm = xTm-curTime;
+		if(cTm > 0){
+			eval(resetAll('bookmarks'));
+			eval(P7_downClass2(btn,'bookmarksHover'));
+			break;
+		}
+		q++
+	}
+}
+
+//-->//-->
+</script>
+</head>
+<body>
+<img src="r1.gif" alt="" name="slideimage" id="slideimage" style="width:100%;height:100%;">
+<script language="JavaScript" type="text/javascript">
+	function load_slide() {
+		try
+		{
+			var strWinLoc = window.location.toString();
+			var iLoc = strWinLoc.lastIndexOf('=');
+			if (iLoc > 0)
+			{
+				var strUrl = strWinLoc.substring(iLoc + 1);
+				document.getElementById('slideimage').src = strUrl;
+			}
+		}
+		catch(e) {}
+	}
+	load_slide();
+</script>
+</body>
+</html>

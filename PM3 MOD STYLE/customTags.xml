@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- *********** Advanced Skin Settings *********** -->
+<ADVANCED>
+	<SETTING>
+		<NAME><![CDATA[Presentation Title]]></NAME>
+		<TAG><![CDATA[<<@presentationtitle@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter a title for this presentation.]]></DESCRIPTION>
+		<VALUE><![CDATA[Accordent PresenterPLUS Presentation]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Date/Time]]></NAME>
+		<TAG><![CDATA[<<@datetime@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter the date/time of this presentation. (ie: 5/1/2009 12:00 PM)]]></DESCRIPTION>
+		<VALUE><![CDATA[5/1/2009 12:00 PM]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Speaker Name]]></NAME>
+		<TAG><![CDATA[<<@speaker@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter the name(s) of the speaker(s).]]></DESCRIPTION>
+		<VALUE><![CDATA[Presentation Speaker]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Description]]></NAME>
+		<TAG><![CDATA[<<@description@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter a description for this presentation.]]></DESCRIPTION>
+		<VALUE><![CDATA[Accordent PresenterPLUS Presentation]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Email Address]]></NAME>
+		<TAG><![CDATA[<<@QAemail@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter an email address where emails should be sent. Leave blank to remove email option.]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Video Aspect]]></NAME>
+		<TAG><![CDATA[<<@VAspect@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter the video aspect mode: standard or widescreen. Unknown value sets standard mode.]]></DESCRIPTION>
+		<VALUE><![CDATA[standard]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+		<MAXLENGTH><![CDATA[10]]></MAXLENGTH>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Presentation Layout]]></NAME>
+		<TAG><![CDATA[<<@Layout@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Layout modes: default, swapped, videoright, noslide, largevideo, onlyvideo. Unknown value sets default mode.]]></DESCRIPTION>
+		<VALUE><![CDATA[default]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+		<MAXLENGTH><![CDATA[15]]></MAXLENGTH>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Topics Tab]]></NAME>
+		<TAG><![CDATA[<<@topicstab@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter 'yes' to show the Topics tab.]]></DESCRIPTION>
+		<VALUE><![CDATA[yes]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+		<MAXLENGTH><![CDATA[3]]></MAXLENGTH>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Enable Audio-Only Mode]]></NAME>
+		<TAG><![CDATA[<<@plusAudioOnlyMode@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter 'yes' to enable audio-only mode.]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+		<MAXLENGTH><![CDATA[3]]></MAXLENGTH>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Audio-Only Overlay Image]]></NAME>
+		<TAG><![CDATA[<<@AUX_AUDIO_ONLY_IMAGE@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Select an image (JPG or PNG only) for the audio-only template. Image size: 320 x 240 (ST) or 320 x 180 (WS)]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Template Background Image]]></NAME>
+		<TAG><![CDATA[<<@mainBG@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Select a background image to use in the template. Image size: 997 x 624]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Template Logo Image]]></NAME>
+		<TAG><![CDATA[<<@TopBannerLogo@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Select a logo image to use in the template. Image size: 997 x 61]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Launch Background Image]]></NAME>
+		<TAG><![CDATA[<<@launchBG@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Select a background image to use in the launch page. Image size: 700 x 500]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Launch Logo Image]]></NAME>
+		<TAG><![CDATA[<<@LaunchBannerLogo@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Select a logo image to use in the launch page. Image size: 700 x 75]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Header Title Color]]></NAME>
+		<TAG><![CDATA[<<@headerTitleColor@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter a valid hex value for the color of the header title and indicator. Enter 'none' to hide the title.]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+		<MAXLENGTH><![CDATA[7]]></MAXLENGTH>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Thumbnails Pagination]]></NAME>
+		<TAG><![CDATA[<<@ThumbnailPagination@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter the number of thumbnails displayed in each page. Enter zero (0) to remove pagination or leave blank to hide.]]></DESCRIPTION>
+		<VALUE><![CDATA[25]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+		<MAXLENGTH><![CDATA[3]]></MAXLENGTH>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Copyright]]></NAME>
+		<TAG><![CDATA[<<@copyright@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter your copyright message. (ie: Copyright Your Company 2009)]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Closed Captioning]]></NAME>
+		<TAG><![CDATA[<<@closedcaptiontab@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter 'yes' to enable closed captioning.]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource File 1 Title]]></NAME>
+		<TAG><![CDATA[<<@DownloadFile1Title@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter a name for this resource file.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource File 1]]></NAME>
+		<TAG><![CDATA[<<@DownloadFile1@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<DESCRIPTION><![CDATA[Select a file to make available for download from the Resources tab.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource File 2 Title]]></NAME>
+		<TAG><![CDATA[<<@DownloadFile2Title@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter a name for this resource file.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource File 2]]></NAME>
+		<TAG><![CDATA[<<@DownloadFile2@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<DESCRIPTION><![CDATA[Select a file to make available for download from the Resources tab.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource File 3 Title]]></NAME>
+		<TAG><![CDATA[<<@DownloadFile3Title@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter a name for this resource file.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource File 3]]></NAME>
+		<TAG><![CDATA[<<@DownloadFile3@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<BROWSE><![CDATA[TRUE]]></BROWSE>
+		<UPLOAD><![CDATA[TRUE]]></UPLOAD>
+		<DESCRIPTION><![CDATA[Select a file to make available for download from the Resources tab.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource Link 1 Title]]></NAME>
+		<TAG><![CDATA[<<@linkURL1Title@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter a name for this resource link.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource Link 1]]></NAME>
+		<TAG><![CDATA[<<@linkURL1@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter an external URL link (ie: http://www.accordent.com) to be displayed in the Resources tab.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource Link 2 Title]]></NAME>
+		<TAG><![CDATA[<<@linkURL2Title@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter a name for this resource link.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource Link 2]]></NAME>
+		<TAG><![CDATA[<<@linkURL2@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter an external URL link (ie: http://www.accordent.com) to be displayed in the Resources tab.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource Link 3 Title]]></NAME>
+		<TAG><![CDATA[<<@linkURL3Title@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter a name for this resource link.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Resource Link 3]]></NAME>
+		<TAG><![CDATA[<<@linkURL3@>>]]></TAG>
+		<VALUE><![CDATA[]]></VALUE>
+		<DESCRIPTION><![CDATA[Enter an external URL link (ie: http://www.accordent.com) to be displayed in the Resources tab.]]></DESCRIPTION>
+		<PERSISTENTVALUE><![CDATA[no]]></PERSISTENTVALUE>
+	</SETTING>
+	<SETTING>
+		<NAME><![CDATA[Require AMMS]]></NAME>
+		<TAG><![CDATA[<<@IsAmms@>>]]></TAG>
+		<DESCRIPTION><![CDATA[Enter 'yes' to force the presentation to be launched from AMMS (requires AMMS v3 or higher)]]></DESCRIPTION>
+		<VALUE><![CDATA[]]></VALUE>
+		<PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+	</SETTING>
+    <SETTING>
+        <NAME><![CDATA[External Event ID]]></NAME>
+        <TAG><![CDATA[<<@ExternalId@>>]]></TAG>
+        <DESCRIPTION><![CDATA[Please enter the External Event ID (if available) associated with the presentation]]></DESCRIPTION>
+        <VALUE><![CDATA[]]></VALUE>
+        <PERSISTENTVALUE><![CDATA[NO]]></PERSISTENTVALUE>
+    </SETTING>
+</ADVANCED>

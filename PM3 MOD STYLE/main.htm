@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title></title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="dhtml.css"  rel="stylesheet" type="text/css" />
+<style type="text/css">
+* {margin:0;padding:0}
+/* mac hide \*/
+html,body{height:100%;width:100%;overflow:hidden;}
+/* end hide */
+body {
+	min-height:388px;/* for good browsers*/
+	min-width:356px;/* for good browsers*/
+}
+/* - */
+</style>
+
+<!--[if lte IE 8]>
+<style type="text/css">
+	#pageOuter{display:block;position:relative;overflow:hidden;}
+	#pageInner{top:50%;display:block;}
+	#bgOuter{top:-50%;position:relative;}
+</style>
+<![endif]-->
+
+<!--[if lte IE 6]>
+<style type="text/css">
+	#footSlice{margin-top:-3px;}
+</style>
+<![endif]-->
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="Silverlight.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="dom.js"></script>
+<script type="text/javascript" src="helper.js"></script>
+<script type="text/javascript" src="visible.js"></script>
+<script type="text/javascript" src="lm.js"></script>
+<script type="text/javascript" src="lib.js"></script>
+<script type="text/javascript" src="pm.js"></script>
+<script type="text/javascript" src="dhtml.js"></script>
+<script type="text/javascript">
+    setPageDefaultTitle();
+    function onPageLoad() {
+        updateUi();
+
+        //Set visibility for contents of info tabs
+        metaCheck();
+
+        //Set visibility for buttons and/or tabs
+        launchCheck();
+
+        //Select the default tab content
+        changeMenu();
+
+        activateVideo();
+    }
+    function updateUi() {
+        try {
+            var t = getTitleMeta();
+            $('div#title h2').html(t);
+            $('div#r2Title div.metaData').html(t);
+            $('div#r2Date div.metaData').html(getDateMeta());
+            $('a#mailTo').attr('href', "mailto:<<@QAemail@>>?subject=" + t).html("The Instructors");
+            $('iframe#region1').attr('src', getDefaultSlidePage());
+        } catch (e) { }
+    }
+    function activateVideo() {
+        var videoFrame = $('iframe#video');
+        if (videoFrame.length > 0) {
+            videoFrame.attr('src', buildVideoFrameUrl(__useSilverlight, decodeUrl(query('mediaUrl')) || '').trim());
+        }
+    }
+</script>
+
+<link rel="stylesheet" type="text/css" href="https://mod2.jsc.nasa.gov/da7/onlinelessons/LLinks/Tooltip/tooltip.css" />
+
+<script language="javascript" type="text/javascript">
+<!--
+function popitup(url) {
+	newwindow=window.open(url,'name','height=400,width=225');
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+
+// -->
+</script>
+
+</head>
+
+<body onLoad="onPageLoad();" onUnload="closeThumbWindow();">
+<div id="pageOuter">
+	<div id="pageInner" class="presoHeight">
+		<div id="bgOuter" class="presoHeight presoWidth presoClip bgOuter_fs">
+			<!-------- Begin header chunk -------->
+			<div id="closeLayer"><a href="#" onClick="exit();">Close</a></div>
+			<div id="logo" class="presoWidth"><img src="spacer.gif" id="logoImage" alt="Logo"></div>
+			<div id="header" class="presoWidth">
+				<div id="title">
+					<h2></h2><span class="titlePointer">&#9668;</span>
+				</div>
+			</div>
+			<!-------- End header chunk -------->
+			<div id="bgInner" class="presoWidth">
+				<div class="topSlice"><div class="corner"></div></div>
+				<div class="bodySlice">
+					<div class="corner">
+						<div class="s clearfix">
+							<div id="videoR2Container" class="videoR2Group">
+								<!-------- Begin video chunk -------->
+								<div id="vidHeader" class="moduleHeader">
+									<dl id="vidGroup" class="moduleHeaderControls grpLeft">
+										<dt id="zoomVid"><a href="#" onClick="vidFull();" 
+											title="Zoom video to fullscreen"><span>Zoom Video</span></a></dt>
+									</dl>
+									<dl id="captioning" class="moduleHeaderControls grpRight">
+										<dt id="captions"><a href="#" onClick="togCCdisplay();"
+											title="Closed Captions"><span>Closed Captions</span></a></dt>
+									</dl>
+								</div>
+								<div id="video_bg" class="video_bg"></div>
+								<!-------- End video chunk -------->
+								<!-------- Begin region2 chunk -------->
+								<div id="r2Layer" class="tab-pane">
+									<!-------- Tab menu for region 2 -------->
+									<ul id="listMenu">
+										<li id="current">Info</li>
+									</ul>
+									<!-------- Event Info tab content -------->
+									<div style="display:block;" class="region2content r2normal" id="eventInfoBox">
+										<div id="r2Title" class="r2Meta clearfix">
+											<div class="metaLabel">Title</div>
+											<div class="metaData"></div>
+										</div>
+										<div id="r2Speaker" class="r2Meta clearfix">
+											<div class="metaLabel">Presenter</div>
+											<div class="metaData"><<@speaker@>></div>
+										</div>
+										<div id="r2Date" class="r2Meta clearfix">
+											<div class="metaLabel">Date</div>
+											<div class="metaData"></div>
+										</div>
+										<div id="r2Description" class="r2Meta clearfix">
+											<div class="metaLabel">Description</div>
+											<div class="metaData"><<@description@>></div>
+										</div>
+									</div>
+									<!-------- Chapters tab content -------->
+									<div style="display:none;" class="region2content r2normal" id="chaptersBox">
+										<span class="r2RowLeft" id="chaptersList"></span>
+									</div>
+									<!-------- Resources tab content -------->
+									<div style="display:none;" class="region2content r2normal" id="resourcesBox">
+										<div id="dlGroup">
+											<h3>Lesson Documents:</h3>
+											<ul id="dlList"><script type="text/javascript">											                    writeList(dlFile, dlName);</script></ul><br/>
+										</div>
+										<div id="linksGroup">
+											<h3>Lesson Links:</h3>
+											<ul id="linkList"><script type="text/javascript">											                      writeList(linkURL, linkName);</script></ul>
+										</div>
+									</div>
+									<!-------- Email tab content -------->
+									<div style="display:none;" class="region2content r2normal" id="emailBox"> 
+										Please Send Lesson Questions to: <a id="mailTo"></a>
+									</div>
+                                    <!-------- Quiz Tab content -------->
+                                    <div style="display:none;" class="region2content r2normal" id="quizBox"><a href="Quiz.html"target="_blank">Quiz - Test Your Knowledge</a> 
+									</div>
+                                     <!-------- Help Tab content -------->
+                                    <div style="display:none;" class="region2content r2normal" id="helpBox"><a href="https://mod2.jsc.nasa.gov/da7/onlinelessons/LLinks/help.htm"target="_blank">Help File "Users Guide, Troubleshooting, and Contact Information"</a> 
+									</div>
+									<!-------- End of tabs -------->
+								</div>
+								<!-------- End region2 chunk -------->
+							</div>
+							<!-------- Begin slides chunk -------->
+							<div id="slideR3Container" class="slideR3Group" style="float:left;">
+								<div id="r3" class="moduleHeader">
+									<dl id="swapping" class="moduleHeaderControls grpLeft">
+										<dt id="swapVid"><a href="#" onClick="swapVidAndSlide();"
+											title="Swap Video &amp; Slide"><span>Swap Video &amp; Slide</span></a></dt>
+									</dl>
+									<dl id="slideGroup" class="moduleHeaderControls grpRight">
+										<dt id="thumbs"><a href="#" onClick="callPopUp();" 
+											title="Open thumbnails window"><span>Thumbnails</span></a></dt>
+										<dt id="zoomSlide"><a href="#" onClick="MM_callJS('_largeslideCall()');" 
+											title="Zoom slide to fullscreen"><span>Zoom Slide</span></a></dt>
+									</dl>
+								</div>
+								<div id="slide_bg"></div>
+							</div>
+							<!-------- End slides chunk -------->
+						</div>
+					</div>
+				</div>
+				<div id="footSlice" class="footSlice"><div class="corner"></div></div>
+			</div>
+			<!-------- Begin footer chunk -------->
+			<div id="footer" class="presoWidth">
+				<strong><span id="copyMsg"><em>A Product of the Mission Operations Directorate - Optimized for 1024 X 768 Screen Resolution</em></span></strong> 
+         <span id="poweredMsg"><strong><a href="https://mod2.jsc.nasa.gov/da7/onlinelessons/LLinks/Problems/problems.htm" onclick="return popitup('https://mod2.jsc.nasa.gov/da7/onlinelessons/LLinks/Problems/problems.htm')"target="_new"><i>Problems?</i></a></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://mod2.jsc.nasa.gov/da7/onlinelessons/NEW_FORMAT/How_To_Navigate/Navigate.html"target="_blank">How To Navigate</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+        </span></strong>
+       </div>
+			<!-------- End footer chunk -------->
+			<!-------- Video and slide as peers, displayed last and topmost -------->
+			<iframe id="video" class="video" frameborder="0" 
+				scrolling="no" name="video"></iframe>
+			<iframe id="region1" class="region1" src="slide.htm" frameborder="0" 
+				scrolling="auto" name="region1"></iframe>
+			<!-------- End video and slide -------->
+		</div>
+	</div>
+</div>
+
+<div class="tooltip">  
+<div class="contact-us">
+<a href="https://mod2.jsc.nasa.gov/da7/onlinelessons/LLinks/Tooltip/tooltip.htm" onclick="return popitup('https://mod2.jsc.nasa.gov/da7/onlinelessons/LLinks/Tooltip/tooltip.htm')">Tooltips</a>
+</div>
+</div>
+
+</body>
+<!-- use jquery png fix for matte background if IE6 or under -->
+<!--[if lt IE 7]>
+<script type="text/javascript" src="pngfix.js"></script>
+<script type="text/javascript">
+ddpngfix.fix('img, .topSlice, .topSlice .corner, .bodySlice, .bodySlice .corner, .footSlice, .footSlice .corner');
+</script>
+<![endif]-->
+</html>

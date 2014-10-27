@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvv BEGIN THUMBS STYLES vvvvvvvvvvvvvvvvvvvvvvvvvv**/
+*, html {margin:0px;padding:0px;}
+/* uncommenting below will cause css to not validate, but does allow you
+   to render a style for the scrollbar on browsers that support it */
+/*html {
+	scrollbar-arrow-color:#999999; 
+	scrollbar-track-color:#ffffff; 
+	scrollbar-face-color:#d7d7d7; 
+	scrollbar-highlight-color:#ffffff; 
+	scrollbar-3dlight-color:#aaaaaa; 
+	scrollbar-darkshadow-color:#aaaaaa; 
+	scrollbar-shadow-color:#ffffff; 
+}*/
+body {font-family:Arial, Helvetica, sans-serif;font-size:14px;background:transparent url(bg_thumbs.jpg) repeat-x top right;background-color:#11415a;}
+
+#thumbList div {border:1px none #ffffff;}
+.thumbox {position:relative;display:inline;padding:1px;}
+
+/* styles for the buttons and drop-down */
+/*#navigation {margin:5px 15px;}*/
+#navigation ul {margin:8px 15px 15px 15px;padding:0px;text-align:center;}
+#navigation li {display:inline;position:relative;}
+#navigation li a {color:#ffffff;text-decoration:none;font-weight:bold;background-color:#555a60;padding:4px 8px;margin-bottom:20px;display:inline;border:1px solid #999999;}
+#navigation li a:hover {color:#ffffff;text-decoration:none;font-weight:bold;background-color:#99bf7a;}
+#navigation li select {margin-bottom:-3px}
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ END LAUNCH STYLES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/

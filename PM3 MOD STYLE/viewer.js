@@ -1,0 +1,1 @@
+function swapImage(e){if(!e){return}var c=e.toLowerCase();var b="?img=";var f=e;if(c.length>b.length){var d=c.indexOf(b);if(d>=0){f=e.substr(d+b.length)}}var a=document.getElementById("img");if(a){a.src=(f.indexOf("@>")>=0)?"r1.gif":f;if(a.style.display=="none"){a.style.display="block"}}};

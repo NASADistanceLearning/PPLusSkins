@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .error { color: #b20000;  }
+        .info { color: #000; }
+        .warning { color: #0f0;  }
+    </style>
+    <script src="common.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        if (self.location != top.location) {
+            top.location = self.location.href
+        }
+        function searchCode(code, enums, field) {
+            for (var a in enums) if (enums[a].code == code) return !field ? a : enums[a][field];
+            return enums.Unknown.text;
+        }
+        window.onload = function() {
+            var msgElement = document.getElementById('message');
+            if (msgElement) {
+                var q = new Accordent.QueryString(window.location.search);
+                var type = searchCode(parseInt(q['type']), MessageTypes);
+                msgElement.className = type.toLowerCase();
+                msgElement.innerHTML = searchCode(parseInt(q['type']), MessageTypes, 'text').toUpperCase() + ': ' + searchCode(parseInt(q['code']), Messages, 'text');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center;">
+        <img id="img" src='spacer.gif' alt='' /><span id='message'></span>
+    </div>
+</body>
+</html>

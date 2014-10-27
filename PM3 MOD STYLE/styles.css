@@ -1,0 +1,293 @@
+@charset "utf-8";
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv BEGIN MAIN STYLES vvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/* uncommenting below will cause css to not validate, but does allow you
+   to render a style for the scrollbar on browsers that support it */
+
+/* presentation width and height. define as necessary for custom skins */
+.presoWidth {width:997px;}
+.presoHeight {height:624px;}
+.presoClip {clip:rect(0px,997px,624px,0px);}
+   
+/*html {
+	scrollbar-arrow-color:#999999; 
+	scrollbar-track-color:#ffffff; 
+	scrollbar-face-color:#d7d7d7; 
+	scrollbar-highlight-color:#ffffff; 
+	scrollbar-3dlight-color:#aaaaaa; 
+	scrollbar-darkshadow-color:#aaaaaa; 
+	scrollbar-shadow-color:#ffffff; 
+}*/
+
+/* main body styles. background color of the skin. bg image overrides color. */
+body {margin:0px;padding:0px;font-family:Arial, Helvetica, sans-serif;font-size:.8em;color:#000000;background-color:#000000;}
+
+h1,h2,h3 {display:inline;}
+h1 {margin:0px;padding:0px;font-size:1.2em;}
+h2 {margin:0px;padding:0px;font-size:1.1em;}
+h3 {margin:0px;padding:0px;font-size:1.0em;}
+
+/* global link styles */
+a:link, a:visited {
+	color:#CCC;
+	text-decoration:none;
+}
+a:hover, a:active {color:#ffcc00;text-decoration:underline;}
+
+hr {height:1px;display:block;border:0px;margin:2px;color:#999999;background-color:#999999;}
+
+.coord { position:relative; }
+.hid   { display:none; }
+.sho   { display:block; }
+
+.clearBoth {clear:both;}
+
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ END MAIN STYLES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/**vvvvvvvvvvvvvvvvvvvv BEGIN TEMPLATE ELEMENT LAYOUT STYLES vvvvvvvvvvvvvvvvvv**/
+/* interface background elements */
+/* use pageOuter/pageInner to absolutely position containing element to middle. */
+#pageOuter{height:100%;width:100%;display:table;vertical-align:middle;}
+/* define height of containing element to acheive vertical align. */
+#pageInner {position:relative;vertical-align:middle;display:table-cell;}
+/* bgOuter is background element of the skin that gets absolutely positioned to center of page. */
+#bgOuter {position:relative;background:#ffffff url(bg_main.jpg);
+	margin-left:auto;margin-right:auto;}
+/* apply a blue border for fullscreen mode */
+.bgOuter_fs {border:1px solid #384d57;}
+/* bgInner is the containing element for the video, slide and region2. */
+#bgInner {position:absolute;top:61px;margin:0px auto;/*min-width:320px;*/}
+
+/* styles for the black matte container around modules */
+#bgInner .topSlice .corner,
+#bgInner .footSlice .corner {height:18px;} /* height of header and footer slice */
+/* following bgInner classes create the matte with PNG. PNGs now supported via
+   jquery as of version 3.0.2.1 */
+#bgInner .topSlice {
+	background:transparent url(inner_tl.png) no-repeat 0px 0px;
+	margin-right:18px; /* space for the top right corner */
+}
+#bgInner .topSlice .corner {
+	background:transparent url(inner_tr.png) no-repeat right 0px;
+	margin-right:-18px; /* pull back the width of above margin to expose corner */
+}
+#bgInner .bodySlice {
+	background:transparent url(inner_ml.png) repeat-y 0px 0px;
+	margin-right:18px; /* space for the right side */
+}
+#bgInner .bodySlice .corner {
+	background:transparent url(inner_mr.png) repeat-y right 0px;
+	margin-right:-18px; /* pull back the width of above margin to expose side */
+}
+#bgInner .bodySlice .corner .s {margin:0px 18px;overflow:hidden;}
+#bgInner .footSlice {
+	background:transparent url(inner_bl.png) no-repeat 0px 0px;
+	margin-right:18px; /* space for the bottom right corner */
+}
+#bgInner .footSlice .corner {
+	background:transparent url(inner_br.png) no-repeat right 0px;
+	margin-right:-18px; /* pull back the width of above margin to expose corner */
+}
+
+/* header elements */
+#header {
+	height:61px;
+	position:absolute;
+	z-index:50;
+	top:0px;
+	left:8px;
+	overflow:auto;
+}
+#logo {height:61px;overflow:hidden;position:absolute;z-index:20;left:0px;top:0px;}
+#title {position:absolute;color:#dd9c00;right:10px;bottom:0px;text-align:right;}
+.titlePointer {color:#d15b05;padding-left:8px;}
+#closeLayer {font-size:.8em;font-weight:bold;position:absolute;z-index:30;right:5px;top:5px;}
+
+/* div grouping of the video and region2 elements. */
+.videoR2Group          { position:relative; width:320px; float:left;  /*margin-right:1px;*/ }
+.videoR2Group_mirrored { position:relative; width:320px; float:right; /*margin-left:1px;*/  }
+/* region2 elements */
+#r2Layer {overflow:auto;margin-top:1px;}
+
+/* region3 elements */
+/* achieves the 1px gap between the video/region2 and the slide. */
+.slideR3Group          {position:relative;margin-left:1px;/*margin-bottom:-3px;*/}
+.slideR3Group_mirrored {position:relative;margin-right:1px;/*margin-bottom:-3px;*/}
+#r3 {width:640px;}
+
+/* footer elements */
+#footer {
+	font-size:.8em;
+	position:absolute;
+	bottom:11px;
+	color:#c3e5f0;
+	left: 6px;
+}
+#footer a {
+	font-style: italic;
+	font-weight: bold;
+}
+#copyMsg {float:left;padding-left:10px;}
+#poweredMsg {
+	float:right;
+	padding-right:10px;
+	color: #FFF;
+	font-size: 9pt;
+}
+
+/* elements involved in DHTML scripting operations */
+.grpRight       { float:right; }
+.grpLeft        { float:left; }
+#slide_bg       { width:640px; height:480px; background-color:#333333; }
+#region1        { position:absolute; }
+#video_bg       { position:relative; width:320px; background-color:#333333; }
+#video          { position:absolute; }
+#captionbox     { background-color:#181818; }
+#mscc           { font-size:11px; letter-spacing:1px; color:#FFFFFF; text-align:center;
+	overflow:auto; line-height:16px; height:64px; }
+#controls       { width:100%; }
+
+/* top-menu buttons and their icons */
+#zoomVid     { background:url(sprite_icons.gif) no-repeat 0 -5px;   padding:0 5px; }
+#swapVid     { background:url(sprite_icons.gif) no-repeat 0 -31px;  padding:0 5px; }
+#captions    { background:url(sprite_icons.gif) no-repeat 0 -57px;  padding:0 5px; }
+#thumbs      { background:url(sprite_icons.gif) no-repeat 0 -83px;  padding:0 5px; }
+#zoomSlide   { background:url(sprite_icons.gif) no-repeat 0 -109px; padding:0 5px; }
+/**^^^^^^^^^^^^^^^^^^^^ END TEMPLATE ELEMENT LAYOUT STYLES ^^^^^^^^^^^^^^^^^^^^**/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/********************** BEGIN MODULE HEADER ELEMENT STYLES **********************/
+/* background styles for header of each module */
+.moduleHeader {height:26px;line-height:26px;margin-bottom:1px;background:transparent url(runner.gif) repeat-x top right;}
+
+/* styles for the buttons that appear on the module headers */
+.moduleHeaderControls {display:inline;}
+.moduleHeaderControls dl {}
+.moduleHeaderControls dt { display:inline; margin:0px 8px 0px 8px; }
+.moduleHeaderControls a,
+.moduleHeaderControls a:link,
+.moduleHeaderControls a:visited { padding:0px 0px 0px 25px; color:#ffffff;
+   font-weight:bold; font-style:italic; font-size:11px; line-height:26px; text-decoration:none; }
+.moduleHeaderControls a:hover,
+.moduleHeaderControls a:active {color:#ffcc00;}
+.moduleHeaderControls a span,
+.moduleHeaderControls a:hover span {line-height:26px;}
+/*.moduleHeaderControls a,
+.moduleHeaderControls a span {display:block;float:left;cursor:pointer;}*/
+
+/* Hide from IE5-Mac \*/
+.moduleHeaderControls a, .moduleHeaderControls a span {float:none;}
+/* End hide */
+
+/************************ END MODULE HEADER ELEMENT STYLES **********************/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvv BEGIN REGION2 STYLES vvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/* header background */
+.tab-pane {margin:0px;position:relative;width:100%;background:transparent url(runner.gif) repeat-x top right;}
+/* base style for tabs */
+.tab-pane #listMenu ul {margin:0;padding:0;list-style:none;}
+.tab-pane #listMenu li {
+	z-index:1;position:relative;top:0;display:inline;
+	font-weight:bold;font-size:11px;font-style:italic;text-align:left;
+	margin:0px 1px 0px 0px;float:left;padding:0px 8px 0px 3px;line-height:26px;
+	background:transparent url(navBG.gif) repeat-x top right;
+}
+/* style for currently selected tab */
+.tab-pane #listMenu li#current {color:#ffffff;background:transparent url(navBG.gif) repeat-x top right;background-position:0 -27px;}
+/* link styles */
+.tab-pane #listMenu li a,
+.tab-pane #listMenu li a:link,
+.tab-pane #listMenu li a:visited {color:#ffffff;text-decoration:none;/*cursor:hand;*/cursor:pointer;}
+.tab-pane #listMenu li a:hover,
+.tab-pane #listMenu li a:active {color:#ffcc00;}
+/* adds a 1px buffer between tabs and the content */
+.tab-pane #listMenu li {white-space:nowrap;height:27px;}
+
+/* event info styles */
+/* style for content box underneath the tab menu */
+.region2content {
+	width:310px;padding:10px 5px;clear:both;background:#545b5f;
+	color:#ffffff;position:relative;overflow:auto;font-size:.9em;
+}
+.r2Meta {width:280px; margin-top:1px; margin-bottom:3px; line-height:16px;}
+.metaLabel {float:left;margin-right:-200px;font-weight:bold;color:#ffffff;}
+.metaData {width:200px;font-weight:normal;color:#ffffff;float:right;}
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^ END REGION2 STYLES ^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+
+
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv**/
+/**vvvvvvvvvvvvvv BEGIN GRAPHIC CONTROLS (SAFARI MAC ONLY) STYLES vvvvvvvvvvvvv**/
+#graphicControls {width:100%;height:64px;background:transparent url(sprite_player.gif) repeat-x; display:none;}
+#statusBarHolder {width:100%;height:22px;}
+
+a#playBtn  {float:left;display:inline-block;width:43px;height:29px;background:transparent url(sprite_player.gif) no-repeat;}
+a:link#playBtn,
+a:visited#playBtn {background-position:0 -64px;}
+a:hover#playBtn,
+a:active#playBtn {background-position:0 -93px;}
+
+a#pauseBtn  {float:left;display:inline-block;width:35px;height:29px;background:transparent url(sprite_player.gif) no-repeat;}
+a:link#pauseBtn,
+a:visited#pauseBtn {background-position:0 -122px;}
+a:hover#pauseBtn,
+a:active#pauseBtn {background-position:0 -151px;}
+
+a#stopBtn  {float:left;display:inline-block;width:43px;height:29px;background:transparent url(sprite_player.gif) no-repeat;}
+a:link#stopBtn,
+a:visited#stopBtn {background-position:0 -180px;}
+a:hover#stopBtn,
+a:active#stopBtn {background-position:0 -209px;}
+
+a#volumeDwnBtn  {float:right;display:inline-block;width:33px;height:29px;background:transparent url(sprite_player.gif) no-repeat;}
+a:link#volumeDwnBtn,
+a:visited#volumeDwnBtn {background-position:0 -238px;}
+a:hover#volumeDwnBtn,
+a:active#volumeDwnBtn {background-position:0 -267px;}
+
+a#volumeUpBtn  {float:right;display:inline-block;width:33px;height:29px;background:transparent url(sprite_player.gif) no-repeat;}
+a:link#volumeUpBtn,
+a:visited#volumeUpBtn {background-position:0 -296px;}
+a:hover#volumeUpBtn,
+a:active#volumeUpBtn {background-position:0 -325px;}
+/**^^^^^^^^^^^^^^^ END GRAPHIC CONTROLS (SAFARI MAC ONLY) STYLES ^^^^^^^^^^^^^^**/
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^**/
+
+
+
+
+
+/* misc */
+html[xmlns] .clearfix {display: block;}
+* html .clearfix {height: 1%;}
+.clearfix:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+.clearfix {display:inline-block;}
+#pageOuter #pageInner #bgOuter #footer #poweredMsg a strong {
+	color: #FFF;
+	font-style: italic;
+}
+#pageOuter #pageInner #bgOuter #footer #poweredMsg a b {
+	font-weight: bold;
+	color: #FFF;
+}
+#pageOuter #pageInner #bgOuter #bgInner .bodySlice .corner .s.clearfix #videoR2Container #r2Layer #quizBox a {
+	color: #ffcc00;
+	text-decoration: underline;
+}
+#pageOuter #pageInner #bgOuter #bgInner .bodySlice .corner .s.clearfix #videoR2Container #r2Layer #emailBox #mailTo {
+	color: #ffcc00;
+	text-decoration: underline;
+}
+#pageOuter #pageInner #bgOuter #bgInner .bodySlice .corner .s.clearfix #videoR2Container #r2Layer #helpBox a {
+	color: #ffcc00;
+	text-decoration: underline;
+}

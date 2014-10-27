@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Thumbnails - <<@presentationtitle@>></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="thumbs.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="p.js"></script>
+<script language="javascript" type="text/javascript" src="lm.js"></script>
+<script language="javascript">
+<!--
+function seek(timestr) {
+	if (self.opener.top.video) {
+		self.opener.top.video.seek(timestr);
+	} else if (self.opener && self.opener.top.video) {
+		self.opener.top.video.seek(timestr);
+	} else {
+		// alert(timestr);
+	}
+}
+
+function Mod(a, b) {
+	covt = a - Math.floor(a / b) * b;
+	return (covt);
+}
+
+function GetTimeFromLong(timer) {
+	var sec = Math.floor(timer);
+	var intHours = (sec - (Mod(sec, 3600))) / 3600;
+	var intSeconds = Mod((Mod(sec, 3600)), 60);
+	var totHoursSec = 0;
+	if (intHours > 0) { totHoursSec = intHours * 60; }
+	var intMinutes = Math.round(((sec - (Mod(intHours, 3600)) - intSeconds) / 60) - totHoursSec);
+	var strHours = new String((intHours));
+	var strMinutes = new String((intMinutes));
+	var strSeconds = new String((intSeconds));
+	if (intHours < 10) strHours = "0" + strHours;
+	if (intMinutes < 10) strMinutes = "0" + strMinutes;
+	if (intSeconds < 10) strSeconds = "0" + strSeconds;
+	sec = strHours + ":" + strMinutes + ":" + strSeconds;
+	return sec;
+	//seek(sec);
+}
+
+function showMessage(msg) {
+	alert(msg);
+}
+
+//    function synchTime(sTime) {
+//        var comparedHMStime = GetTimeFromLong(sTime);
+//        var chapterNumber;
+//        var chapterString;
+//        if (document.getElementById(comparedHMStime).innerHTML) {
+//            chapterNumber = document.getElementById(comparedHMStime).innerHTML;
+//            chapterString = 'ch' + chapterNumber;
+
+//            //<KP> Additional parameter for silverlight player to handle seek
+//            window.opener.top.video.seekasx(chapterString, sTime);
+//            //</KP>
+
+//            //alert('comparedHMStime = ' + comparedHMStime + ' chapterNumber = ' + chapterNumber);
+//            return true;
+//        }
+//        return true;
+//    }
+
+function MM_preloadImages() { //v3.0
+	var d = document; if (d.images) {
+		if (!d.MM_p) d.MM_p = new Array();
+		var i, j = d.MM_p.length, a = MM_preloadImages.arguments;
+		for (i = 0; i < a.length; i++) {
+			if (a[i].indexOf("#") != 0) {
+				d.MM_p[j] = new Image; d.MM_p[j++].src = a[i];
+			}
+		}
+	}
+}
+
+function MM_swapImgRestore() { //v3.0
+	var i, x, a = document.MM_sr; for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+	var p, i, x; if (!d) d = document;
+	if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+		d = parent.frames[n.substring(p + 1)].document; n = n.substring(0, p);
+	}
+	if (!(x = d[n]) && d.all) x = d.all[n]; for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+	for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+	if (!x && d.getElementById) x = d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+	var i, j = 0, x, a = MM_swapImage.arguments; document.MM_sr = new Array; for (i = 0; i < (a.length - 2); i += 3)
+	if ((x = MM_findObj(a[i])) != null) { document.MM_sr[j++] = x; if (!x.oSrc) x.oSrc = x.src; x.src = a[i + 2]; }
+}
+
+function _unloadme() {
+	try {
+		if (window.opener && window.opener.top.video && top.window.opener.top.video.openThumbPage) {
+			top.window.opener.top.video.openThumbPage = false;
+		}
+	} catch (e) {
+		return true;
+	}
+}
+
+//	load XML and XSL files, then apply transformation
+//	cross platform IE & Mozilla
+function loadPresentation() {
+	if (document.implementation && document.implementation.createDocument) {
+		// Mozilla
+		var xsltProcessor = new XSLTProcessor();
+		// load the xslt file
+		var myXMLHTTPRequest = new XMLHttpRequest();
+		myXMLHTTPRequest.open("GET", "thumbs.xsl", false);
+		myXMLHTTPRequest.send(null);
+		// get the XML document
+		xslStylesheet = myXMLHTTPRequest.responseXML;
+		xsltProcessor.importStylesheet(xslStylesheet);
+
+		// load the xml file
+		myXMLHTTPRequest = new XMLHttpRequest();
+		myXMLHTTPRequest.open("GET", "presentation.xml", false);
+		myXMLHTTPRequest.send(null);
+
+		var xmlSource = myXMLHTTPRequest.responseXML;
+
+		//transform
+		var resultDocument = xsltProcessor.transformToFragment(xmlSource, document);
+		document.getElementById("thumbList").appendChild(resultDocument);
+	} else if (window.ActiveXObject) {
+		// IE
+
+		// Load XML
+		xml = new ActiveXObject("MSXML2.DOMDocument");
+		xml.async = false
+		xml.load("presentation.xml")
+
+		// Load XSL
+		xsl = new ActiveXObject("MSXML2.DOMDocument");
+		xsl.async = false
+		xsl.load("thumbs.xsl")
+
+		// Transform
+		document.getElementById("thumbList").innerHTML = xml.transformNode(xsl);
+	} else {
+		// Browser unknown
+		// --- alert("Browser unknown");
+	}
+}
+//-->
+</script>
+
+</head>
+<body onunload="_unloadme()">
+<div align="center">
+	<div id="navigation">
+		<ul>
+			<li id="prev" name="prev"><a title="previous" href="#" rel="previous">&lt;</a></li>
+			<li id="dd" name="dd"><select></select></li>
+			<li id="next" name="next"><a title="next" href="#" rel="next">&gt;</a></li>
+		</ul>
+	</div>
+	<div id="thumbList"></div>
+	<script language="JavaScript" type="text/JavaScript">
+		loadPresentation();
+		var paginate = new vpgn("thumbox", "<<@ThumbnailPagination@>>", "div");
+		paginate.createpagination("navigation");
+	</script>
+</div>
+</body>
+</html>

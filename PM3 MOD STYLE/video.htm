@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title><<@presentationtitle@>></title>
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="dhtml.css"  rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="Silverlight.js"></script>
+<script type="text/javascript" src="dom.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="lib.js"></script>
+<script type="text/javascript" src="lm.js"></script>
+<script type="text/javascript" src="msTrk.js"></script>
+<script type="text/javascript" src="ms.js"></script>
+<script type="text/javascript" src="player.js"></script>
+<script type="text/javascript">
+<!--
+function ensureOOB() { //Condition: must be live to be able to call this function
+    var type = query("player");
+    var bandwidth = (query('bandwidth') || Bandwidth.High).toLowerCase();
+    if (type == PlayerType.Wmp || type == PlayerType.Silverlight) {       //Remove this restriction when we are ready to handle Flash and Real
+        var oob = {};
+        oob[Bandwidth.High] = "<<@MsHighSync@>>";
+        oob[Bandwidth.Medium] = "<<@MsMedSync@>>";
+        oob[Bandwidth.Low] = "<<@MsLowSync@>>";
+        for (var b in oob) {
+            if (hasNonEmptyItem([oob[b]]) && bandwidth == b) {
+                if (!window.getOOBType) { window.getOOBType = function () { return (type == PlayerType.Silverlight ? PlayerType.Wmp : type) + bandwidth; } }
+            (new JSONscriptRequest()).addScript('sync.js');
+                return;
+            }
+        }
+    }
+}
+if (!isOnDemand(query('archived')))
+    ensureOOB();
+var _ccFile = top.getCCFile();
+var _ccTexts = null;
+var useSilverlight = (query('player') === PlayerType.Silverlight);
+
+if (useSilverlight === false) {
+	if (!isBrowserIeWin() && !hasP25()) {
+		document.location = "video_f.htm?ch=video";
+	}
+}
+else if (hasNonEmptyItem([_ccFile])) {
+	loadData(_ccFile, false, 'text', function(xml) { _ccTexts = parseCC(xml, '<br />'); }, null, true);
+}
+
+var ie, ns, mz, debug, msver, os;
+
+//Silverlight variables and methods    
+var _player = null;
+var _chapters = null;
+var _events = null;
+var _loadPlayerIntervalId = null;
+
+function seekasx(chapter, time) {
+	setMediaPosition((!time) ? 0 : time);
+}   
+function setChapters() {
+		//if (_player && _loadPlayerIntervalId) {
+		if (!_chapters) {
+			_events = parent._events;
+			_chapters = parent._chapters;
+			if(_player)
+			_player.setChapters(_chapters);
+			clearInterval(_loadPlayerIntervalId);
+			_loadPlayerIntervalId = null;
+		}
+		//}
+}
+function setMediaPosition(seconds) {
+	if (useSilverlight && _player)
+		_player.setMediaPosition(seconds);
+}
+function createSilverlight(container, width, height, sourceFile) {
+	if (!_player) _player = new Accordent.SilverlightPlayer(top.getDefaultSlidePage(), null, getMaxMarkerCount());
+	//_loadPlayerIntervalId = setInterval(setChapters, 50);
+	var isLive = !isOnDemand(query('archived'));
+	_player.setSource(decodeURIComponent(sourceFile), isLive, toSeconds(query('time')));
+	//_player.setSource(unescape(sourceFile), isLive, toSeconds(unescape(query('time'))));
+	_player.setCc(_ccTexts);
+	_player.addSyncHandler(onSyncSlide);
+	return _player.initComponents(container, "videoPlugin", query('xaml'), width, height, null);
+}
+function onSyncSlide(type, text, region, time, seeking) {
+	type = (type || '').toLowerCase();
+	if (type === 'url') {
+		ms9sync(type, text + '&&' + region);
+
+		//Also update closed caption if any
+		if (seeking === true && _ccTexts) {
+			var ccMarker = _ccTexts.find(time);
+			showNextCc((!ccMarker) ? '' : ccMarker.getText());
+		}
+	}
+	else if (type == 'caption' || type == 'text') {
+		showNextCc(text);
+	}
+}
+function showNextCc(text) {
+	var ccDiv = document.getElementById('mscc');
+	if (ccDiv)
+		ccDiv.innerHTML = text;
+}
+//End silverlight variables and methods
+
+if (useSilverlight === false)
+	detectms();
+
+function P25setParam() {
+	if (hasP25()) {
+		Initialize();
+	}
+}
+var __audioOnly = audioModeCheck();
+function createVideoPlayer() {
+	if (useSilverlight === false) {
+		var isLive = !isOnDemand(query('archived'));
+		videoms(getMediaUrl(), isLive === true ? 'mini' : 'full', 320, (__audioOnly === true) ? 0 : (widescreenMode) ? 180 : 240, _ccFile);
+	}
+}
+function audioOnlyCheck(speakerImg) {
+	if (__audioOnly === true) {
+		document.getElementById('speakerImg').src = speakerImg;
+		show('speakerImgLayer');
+	}
+}
+
+function onPageLoad() {
+	_loadPlayerIntervalId = setInterval(setChapters, 50);
+	var speakerImg = '<<@AUX_AUDIO_ONLY_IMAGE@>>';
+
+	// check to see if custom image is being used. if not, use default
+	if (speakerImg == '' || speakerImg.indexOf("<@") > -1)
+		speakerImg = (widescreenMode) ? 'audioTemp_ws.jpg' : 'audioTemp_st.jpg';
+
+	// check if widescreen mode for audio only
+	document.getElementById('speakerImg').className = (widescreenMode) ? "ws_speakerImg" : "speakerImg";
+
+	if (useSilverlight == false) {
+		P25setParam();
+		audioOnlyCheck(speakerImg);
+	}
+	else {
+		var media = document.getElementById('sourcemedia');
+		if (media) {
+			media.innerHTML = '';
+			var dim = getCompactPlayerDimensions(query('layout'));
+			createSilverlight(media, dim.w, dim.h, getMediaUrl());
+		}
+
+		_player.setSpeakerImage(__audioOnly, speakerImg || 'audioTemp_st.jpg');
+	}
+
+	initFS();
+
+	try {
+	    if (window.getMediaDurationScan && typeof (window.getMediaDurationScan) == 'function')
+	        getMediaDurationScan();
+	}
+	catch (ex) { }
+}
+function getMediaUrl() {
+	//return unescape(query('mediaUrl'));
+	return decodeUrl(query('mediaUrl'));
+}
+//-->
+</script>
+</head>
+
+<body onload="onPageLoad();">
+<div id="videoLayer">
+	<div id="sourcemedia">
+		<div id="speakerImgLayer" style="display:none;"><img src="spacer.gif" id="speakerImg" border="0"/></div>
+		<script language="JavaScript">createVideoPlayer();</script>
+	</div>
+	<div id="captionbox" class="captionbox">
+		<div id="mscc"></div>
+	</div>
+</div>
+</body>
+</html>
